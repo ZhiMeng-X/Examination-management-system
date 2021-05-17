@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xzm.exam.dao.ExamDao">
+
+    <select id="getAllExam" resultType="com.xzm.exam.domain.NetChoose">
+        select * from tbl_netchoose order by rand() limit 0,5
+    </select>
+
+    <select id="getAllTest" resultType="com.xzm.exam.domain.NetChoose">
+        select * from tbl_netchoose limit #{skipCount},#{pageSize}
+    </select>
+
+    <select id="getAllTestCount" resultType="int">
+         select count(*) from tbl_netchoose
+    </select>
+
+    <update id="updateCollection">
+        update tbl_netchoose set isCollection=#{isCollection} where id=#{id}
+    </update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xzm.exam.dao.NetChooseCollectionDao">
+    <insert id="addCollection">
+        insert into tbl_netchoosecollection  values (
+            #{id},
+            #{student},
+            #{exam},
+            #{createTime}
+        );
+    </insert>
+
+    <delete id="delCollection">
+        delete from tbl_netchoosecollection where exam=#{examId}
+    </delete>
+
+    <select id="getCollectionTest" resultType="com.xzm.exam.domain.NetChoose">
+        select
+        n.id,
+        n.title,
+        n.optionA,
+        n.optionB,
+        n.optionC,
+        n.optionD,
+        n.answer
+        from
+        tbl_netchoosecollection c
+        join tbl_netchoose n
+        on n.id=c.exam
+        where c.student=#{studentId}
+        order by c.createTime desc
+        limit #{skipCount},#{pageSize}
+    </select>
+    <select id="getCollectionCount" resultType="int">
+        select count(*) from tbl_netchoosecollection where student=#{studentId}
+
+    </select>
+
+    <delete id="deleteCollectionTest">
+        delete from tbl_netchoosecollection where student = #{student_id} and exam=#{NetChoose_id}
+    </delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xzm.exam.dao.ExamHistoryDao">
+
+    <insert id="addExamResult">
+        insert into  tbl_examhistory values (
+            #{id},
+            #{student},
+            #{score},
+            #{createTime}
+        );
+    </insert>
+
+    <select id="getExamHistory" resultType="com.xzm.student.domain.ExamHistory">
+        select
+            u.name as student,
+            e.score,
+            e.createTime
+
+        from tbl_examhistory e
+        join tbl_student u
+        on u.id=e.student
+        where student=#{id}
+        order by e.createTime desc
+        limit #{skipCount},#{pageSize}
+    </select>
+
+    <select id="getExamHistoryCount" resultType="int">
+        select count(*) from tbl_examhistory where student=#{id}
+    </select>
+    <select id="getExamScore" resultType="ExamHistory">
+        select * from tbl_examhistory where student=#{id}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

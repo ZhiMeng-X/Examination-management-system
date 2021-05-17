@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xzm.student.dao.SchoolDao">
+
+    <select id="queryAll" resultType="com.xzm.student.domain.School">
+        select * from tbl_school
+    </select>
+
+    <insert id="regiest">
+        insert into tbl_school (
+            #{id},
+            #{loginAct},
+            #{name},
+            #{loginPwd},
+            #{email},
+            #{lockState},
+            #{school},
+            #{academic},
+            #{clazz},
+            #{allowIps},
+            #{createTime}
+
+        ) values (
+            id,
+            loginAct,
+            name,
+            loginPwd,
+            email,
+            lockState,
+            school,
+            academic,
+            clazz,
+            allowIps,
+            createTime
+        );
+    </insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
